@@ -2,6 +2,7 @@ package classpath
 
 import "errors"
 import "strings"
+import "fmt"
 
 type CompositeEntry []Entry
 
@@ -15,6 +16,7 @@ func newCompositeEntry(pathList string) CompositeEntry {
 }
 
 func (self CompositeEntry) readClass(className string) ([]byte, Entry, error) {
+	fmt.Println("com")
 	for _, entry := range self {
 		data, from, err := entry.readClass(className)
 		if err != nil {

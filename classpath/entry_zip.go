@@ -4,6 +4,7 @@ import "archive/zip"
 import "errors"
 import "io/ioutil"
 import "path/filepath"
+import "fmt"
 
 type ZipEntry struct {
 	absPath string
@@ -18,6 +19,7 @@ func newZipEntry(path string) *ZipEntry {
 }
 
 func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
+	fmt.Println("zip")
 	r, err := zip.OpenReader(self.absPath)
 	if err != nil {
 		return nil, nil, err

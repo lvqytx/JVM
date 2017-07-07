@@ -33,5 +33,5 @@ func parseCmd() *Cmd {
 	return cmd
 }
 func printUsage() {
-	fmt.Printf("Usage:.%s [-options] class [args...]\n", os.Args[0])
+	fmt.Printf("Usage: %s [-options] class [args...]\n", os.Args[0])
 }
