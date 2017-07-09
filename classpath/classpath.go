@@ -2,7 +2,6 @@ package classpath
 
 import "os"
 import "path/filepath"
-import "fmt"
 
 type Classpath struct {
 	bootClasspath Entry
@@ -19,7 +18,6 @@ func Parse(jreOption, cpOption string) *Classpath {
 
 func (self *Classpath) ReadClass(className string) ([]byte, Entry, error) {
 	className = className + ".class"
-	fmt.Println(className)
 	if data, entry, err := self.bootClasspath.readClass(className); err == nil {
 		return data, entry, err
 	}
