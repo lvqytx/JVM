@@ -5,6 +5,9 @@ import "errors"
 import "io/ioutil"
 import "path/filepath"
 
+// import "fmt"
+// import "strings"
+
 type ZipEntry struct {
 	absPath string
 }
@@ -24,8 +27,14 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 	}
 
 	defer r.Close()
+	// fmt.Println(className)
 	for _, f := range r.File {
+		// debug
+		// if strings.Contains(f.Name, "java/lang") {
+		// 	fmt.Println("zipEntry    " + f.Name)
+		// }
 		if f.Name == className {
+			// fmt.Println("zipEntry    " + f.Name)
 			rc, err := f.Open()
 			if err != nil {
 				return nil, nil, err
